@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Umid Baholash Tizimi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Umid Akademiyasi</p>
+        <h1>O'qituvchi va talaba baholash tizimi</h1>
+        <p class="subtitle">
+          Guruhlar, davomati, baholar va nazorat topshiriqlarini boshqarish hamda
+          talabalar uchun shaxsiy kuzatuv paneli.
+        </p>
+      </div>
+      <div class="user-card">
+        <label for="roleSelect">Rolni tanlang</label>
+        <select id="roleSelect">
+          <option value="admin">O'qituvchi (Admin)</option>
+          <option value="student">Talaba</option>
+        </select>
+        <div id="studentLogin" class="hidden">
+          <label for="studentSelect">Talabani tanlang</label>
+          <select id="studentSelect"></select>
+        </div>
+        <button id="enterBtn">Kirish</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="adminView" class="view hidden">
+        <div class="grid two">
+          <div class="panel">
+            <h2>Guruhlarni boshqarish</h2>
+            <form id="groupForm" class="form-row">
+              <input type="text" id="groupName" placeholder="Yangi guruh nomi" required />
+              <button type="submit">Qo'shish</button>
+            </form>
+            <ul id="groupList" class="list"></ul>
+          </div>
+          <div class="panel">
+            <h2>Talabalarni boshqarish</h2>
+            <form id="studentForm" class="form-row stacked">
+              <input type="text" id="studentName" placeholder="Talaba F.I.Sh" required />
+              <select id="studentGroupSelect"></select>
+              <button type="submit">Talaba qo'shish</button>
+            </form>
+            <div id="studentList" class="card-list"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Davomat, baho va topshiriqlar</h2>
+          <div class="form-row stacked">
+            <label for="adminStudentSelect">Talabani tanlang</label>
+            <select id="adminStudentSelect"></select>
+          </div>
+          <div class="grid three">
+            <div>
+              <h3>Davomat</h3>
+              <form id="attendanceForm" class="form-row stacked">
+                <input type="date" id="attendanceDate" required />
+                <select id="attendanceStatus">
+                  <option value="kelgan">Kelgan</option>
+                  <option value="kechikkan">Kechikkan</option>
+                  <option value="kelmagan">Kelmagan</option>
+                </select>
+                <button type="submit">Davomat qo'shish</button>
+              </form>
+              <ul id="attendanceList" class="list"></ul>
+            </div>
+            <div>
+              <h3>Baholar</h3>
+              <form id="gradeForm" class="form-row stacked">
+                <input type="text" id="gradeTitle" placeholder="Nazorat nomi" required />
+                <input type="number" id="gradeScore" min="0" max="100" placeholder="Baho (0-100)" required />
+                <button type="submit">Baho qo'shish</button>
+              </form>
+              <ul id="gradeList" class="list"></ul>
+            </div>
+            <div>
+              <h3>Nazorat topshiriqlari</h3>
+              <form id="assignmentForm" class="form-row stacked">
+                <input type="text" id="assignmentTitle" placeholder="Topshiriq nomi" required />
+                <textarea id="assignmentDesc" placeholder="Qisqacha tavsif" rows="3"></textarea>
+                <input type="date" id="assignmentDue" required />
+                <select id="assignmentGroup"></select>
+                <button type="submit">Topshiriq yaratish</button>
+              </form>
+              <ul id="assignmentList" class="list"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="studentView" class="view hidden">
+        <div class="panel">
+          <h2>Talaba paneli</h2>
+          <p id="studentMeta" class="muted"></p>
+          <div class="grid three">
+            <div>
+              <h3>Davomat</h3>
+              <ul id="studentAttendance" class="list"></ul>
+            </div>
+            <div>
+              <h3>Baholar</h3>
+              <ul id="studentGrades" class="list"></ul>
+            </div>
+            <div>
+              <h3>Topshiriqlar</h3>
+              <div id="studentAssignments" class="card-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Ma'lumotlar brauzeringizda saqlanadi. Real tizimga integratsiya uchun backend qo'shish mumkin.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
